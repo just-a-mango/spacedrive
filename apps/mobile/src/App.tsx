@@ -31,7 +31,7 @@ import {
 } from '@sd/client';
 import { GlobalModals } from './components/modal/GlobalModals';
 import { reactNativeLink } from './lib/rspcReactNativeTransport';
-import { tw } from './lib/tailwind';
+import { isDarkTheme, tw } from './lib/tailwind';
 import RootNavigator from './navigation';
 import OnboardingNavigator from './navigation/OnboardingNavigator';
 import { currentLibraryStore } from './utils/nav';
@@ -45,7 +45,7 @@ const NavigatorTheme: Theme = {
 	colors: {
 		...DefaultTheme.colors,
 		// Default screen background
-		background: tw.color('app')!
+		background: isDarkTheme() ? tw.color('app')! : tw.color('white')!
 	}
 };
 
@@ -81,7 +81,7 @@ function AppNavigation() {
 					if (navRef.getRootState().routeNames.includes('GetStarted')) {
 						return;
 					}
-					console.log(`Navigated from ${previousRouteName} to ${currentRouteName}`);
+					// console.log(`Navigated from ${previousRouteName} to ${currentRouteName}`);
 					currentRouteName && setCurrentPath(currentRouteName);
 				}
 			}}
@@ -100,14 +100,14 @@ function AppNavigation() {
 
 function AppContainer() {
 	// Enables dark mode, and screen size breakpoints, etc. for tailwind
-	useDeviceContext(tw, { withDeviceColorScheme: false });
+	useDeviceContext(tw, { withDeviceColorScheme: true });
 
 	useInvalidateQuery();
 
 	const { id } = useSnapshot(currentLibraryStore);
 
 	return (
-		<SafeAreaProvider style={tw`bg-app flex-1`}>
+		<SafeAreaProvider style={tw`dark:bg-app flex-1 bg-white`}>
 			<GestureHandlerRootView style={tw`flex-1`}>
 				<MenuProvider>
 					<BottomSheetModalProvider>
