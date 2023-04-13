@@ -7,7 +7,7 @@ module.exports = {
 	settings: {
 		tailwindcss: {
 			config: './tailwind.config.js',
-			callees: ['classnames', 'clsx', 'ctl', 'cva', 'tw', `twStyle`],
+			callees: ['cva', 'tw', `twStyle`],
 			tags: ['tw', 'twStyle']
 		}
 	}
