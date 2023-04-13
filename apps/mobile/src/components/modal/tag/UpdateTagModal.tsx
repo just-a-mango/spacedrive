@@ -56,9 +56,9 @@ const UpdateTagModal = forwardRef<ModalRef, Props>((props, ref) => {
 			showCloseButton
 		>
 			<View style={tw`p-4`}>
-				<Text style={tw`text-ink-dull mb-1 ml-1 text-xs font-medium`}>Name</Text>
+				<Text style={tw`mb-1 ml-1 text-xs font-medium text-ink-dull`}>Name</Text>
 				<Input value={tagName} onChangeText={(t) => setTagName(t)} />
-				<Text style={tw`text-ink-dull mb-1 ml-1 mt-3 text-xs font-medium`}>Color</Text>
+				<Text style={tw`mb-1 ml-1 mt-3 text-xs font-medium text-ink-dull`}>Color</Text>
 				<View style={tw`ml-2 flex flex-row items-center`}>
 					<Pressable
 						onPress={() => setShowPicker((v) => !v)}

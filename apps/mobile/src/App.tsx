@@ -105,7 +105,7 @@ function AppContainer() {
 	const { id } = useSnapshot(currentLibraryStore);
 
 	return (
-		<SafeAreaProvider style={tw`dark:bg-app flex-1 bg-white`}>
+		<SafeAreaProvider style={tw`flex-1 bg-white dark:bg-app`}>
 			<GestureHandlerRootView style={tw`flex-1`}>
 				<MenuProvider>
 					<BottomSheetModalProvider>

@@ -100,7 +100,7 @@ function DropItem(props: DropItemProps) {
 					style={tw`w-full items-center justify-center`}
 					onPress={() => Alert.alert('TODO')}
 				>
-					<View style={tw`bg-app-button h-12 w-12 items-center justify-center rounded-full`}>
+					<View style={tw`h-12 w-12 items-center justify-center rounded-full bg-app-button`}>
 						{icon}
 					</View>
 					{props.name && (

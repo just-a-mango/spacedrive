@@ -64,11 +64,11 @@ const NewLibraryScreen = ({ navigation }: OnboardingStackScreenProps<'NewLibrary
 			)}
 			<View style={tw`mt-4 flex w-full flex-row items-center justify-center`}>
 				<Button variant="accent" onPress={handleNewLibrary}>
-					<Text style={tw`text-ink text-center font-medium`}>New Library</Text>
+					<Text style={tw`text-center font-medium text-ink`}>New Library</Text>
 				</Button>
-				<Text style={tw`text-ink-faint px-4 text-xs font-bold`}>OR</Text>
+				<Text style={tw`px-4 text-xs font-bold text-ink-faint`}>OR</Text>
 				<Button onPress={handleImport} variant="outline">
-					<Text style={tw`text-ink text-center font-medium`}>Import Library</Text>
+					<Text style={tw`text-center font-medium text-ink`}>Import Library</Text>
 				</Button>
 			</View>
 		</OnboardingContainer>

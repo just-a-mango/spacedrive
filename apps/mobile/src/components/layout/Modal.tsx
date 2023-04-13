@@ -26,13 +26,13 @@ interface ModalHandle extends BottomSheetHandleProps {
 const ModalHandle = (props: ModalHandle) => (
 	<BottomSheetHandle
 		{...props}
-		style={tw`bg-app items-end rounded-t-2xl`}
+		style={tw`items-end rounded-t-2xl bg-app`}
 		indicatorStyle={tw`bg-app-highlight/60`}
 	>
 		{props.showCloseButton && (
 			<Pressable
 				onPress={() => props.modalRef.current?.close()}
-				style={tw`bg-app-button absolute top-5 right-4 h-7 w-7 items-center justify-center rounded-full`}
+				style={tw`absolute top-5 right-4 h-7 w-7 items-center justify-center rounded-full bg-app-button`}
 			>
 				<X size={16} color="white" weight="bold" />
 			</Pressable>
@@ -61,7 +61,7 @@ export const Modal = forwardRef<ModalRef, ModalProps>((props, ref) => {
 			handleComponent={(props) => ModalHandle({ modalRef, showCloseButton, ...props })}
 			{...otherProps}
 		>
-			{title && <Text style={tw`text-ink text-center text-base font-medium`}>{title}</Text>}
+			{title && <Text style={tw`text-center text-base font-medium text-ink`}>{title}</Text>}
 			{children}
 		</BottomSheetModal>
 	);
@@ -112,11 +112,11 @@ export const ConfirmModal = forwardRef<ModalRef, ConfirmModalProps>((props, ref)
 			>
 				{/* Title */}
 				{props.title && (
-					<Text style={tw`text-ink text-center text-base font-medium`}>{props.title}</Text>
+					<Text style={tw`text-center text-base font-medium text-ink`}>{props.title}</Text>
 				)}
 				<View style={tw`mt-4 px-6`}>
 					{/* Description */}
-					{props.description && <Text style={tw`text-ink-dull text-sm`}>{props.description}</Text>}
+					{props.description && <Text style={tw`text-sm text-ink-dull`}>{props.description}</Text>}
 					{/* Children */}
 					{props.children && props.children}
 					{/* Buttons */}
@@ -128,7 +128,7 @@ export const ConfirmModal = forwardRef<ModalRef, ConfirmModalProps>((props, ref)
 							disabled={props.loading} // Disables Close button if loading
 							onPress={() => modalRef.current?.close()}
 						>
-							<Text style={tw`text-ink text-sm font-medium`}>Close</Text>
+							<Text style={tw`text-sm font-medium text-ink`}>Close</Text>
 						</Button>
 						{props.ctaAction && (
 							<Button
@@ -138,7 +138,7 @@ export const ConfirmModal = forwardRef<ModalRef, ConfirmModalProps>((props, ref)
 								onPress={props.ctaAction}
 								disabled={props.ctaDisabled || props.loading}
 							>
-								<Text style={tw`text-ink text-sm font-medium`}>{props.ctaLabel}</Text>
+								<Text style={tw`text-sm font-medium text-ink`}>{props.ctaLabel}</Text>
 							</Button>
 						)}
 					</View>
