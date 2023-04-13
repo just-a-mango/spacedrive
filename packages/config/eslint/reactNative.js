@@ -25,12 +25,5 @@ module.exports = {
 		],
 		'tailwindcss/no-custom-classname': 'off',
 		'tailwindcss/no-contradicting-classname': 'warn'
-	},
-	settings: {
-		tailwindcss: {
-			config: './apps/mobile/tailwind.config.js',
-			callees: ['classnames', 'clsx', 'ctl', 'cva', 'tw', `twStyle`],
-			tags: ['tw', 'twStyle']
-		}
 	}
 };

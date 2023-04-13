@@ -20,8 +20,4 @@ tw.style = () => {
 	throw new Error('Use twStyle instead of tw.style');
 };
 
-function isDarkTheme() {
-	return tw.prefixMatch('dark');
-}
-
-export { tw, twStyle, styled, isDarkTheme };
+export { tw, twStyle, styled };

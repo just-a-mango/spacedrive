@@ -1,7 +1,8 @@
 import { BottomTabScreenProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
-import { Broadcast, CirclesFour, Planet, ShareNetwork } from 'phosphor-react-native';
+import { Broadcast, CirclesFour, Planet } from 'phosphor-react-native';
 import React from 'react';
+import { useTheme } from '~/hooks/useTheme';
 import { tw } from '~/lib/tailwind';
 import type { HomeDrawerScreenProps } from './DrawerNavigator';
 import OverviewStack, { OverviewStackParamList } from './tabs/OverviewStack';
@@ -11,6 +12,8 @@ import SpacesStack, { SpacesStackParamList } from './tabs/SpacesStack';
 const Tab = createBottomTabNavigator<TabParamList>();
 
 export default function TabNavigator() {
+	const { isDark } = useTheme();
+
 	return (
 		<Tab.Navigator
 			id="tab"
@@ -20,7 +23,7 @@ export default function TabNavigator() {
 				tabBarActiveTintColor: tw.color('accent'),
 				tabBarInactiveTintColor: tw.color('ink'),
 				tabBarStyle: {
-					backgroundColor: tw.color('app'),
+					backgroundColor: isDark ? tw.color('app') : tw.color('white'),
 					borderTopColor: tw.color('app-shade')
 				}
 			}}

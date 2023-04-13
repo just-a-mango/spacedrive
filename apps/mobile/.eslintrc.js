@@ -3,5 +3,12 @@ module.exports = {
 	parserOptions: {
 		tsconfigRootDir: __dirname,
 		project: './tsconfig.json'
+	},
+	settings: {
+		tailwindcss: {
+			config: './tailwind.config.js',
+			callees: ['classnames', 'clsx', 'ctl', 'cva', 'tw', `twStyle`],
+			tags: ['tw', 'twStyle']
+		}
 	}
 };

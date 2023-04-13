@@ -2,7 +2,6 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import {
 	DefaultTheme,
 	NavigationContainer,
-	Theme,
 	useNavigationContainerRef
 } from '@react-navigation/native';
 import { loggerLink } from '@rspc/client';
@@ -30,8 +29,9 @@ import {
 	usePlausiblePageViewMonitor
 } from '@sd/client';
 import { GlobalModals } from './components/modal/GlobalModals';
+import { isDarkTheme } from './hooks/useTheme';
 import { reactNativeLink } from './lib/rspcReactNativeTransport';
-import { isDarkTheme, tw } from './lib/tailwind';
+import { tw } from './lib/tailwind';
 import RootNavigator from './navigation';
 import OnboardingNavigator from './navigation/OnboardingNavigator';
 import { currentLibraryStore } from './utils/nav';
@@ -39,15 +39,6 @@ import { currentLibraryStore } from './utils/nav';
 dayjs.extend(advancedFormat);
 dayjs.extend(relativeTime);
 dayjs.extend(duration);
-
-const NavigatorTheme: Theme = {
-	...DefaultTheme,
-	colors: {
-		...DefaultTheme.colors,
-		// Default screen background
-		background: isDarkTheme() ? tw.color('app')! : tw.color('white')!
-	}
-};
 
 initPlausible({ platformType: 'mobile' });
 
@@ -70,7 +61,14 @@ function AppNavigation() {
 			onReady={() => {
 				routeNameRef.current = navRef.getCurrentRoute()?.name;
 			}}
-			theme={NavigatorTheme}
+			theme={{
+				...DefaultTheme,
+				colors: {
+					...DefaultTheme.colors,
+					// Default screen background
+					background: isDarkTheme() ? tw.color('app')! : tw.color('white')!
+				}
+			}}
 			onStateChange={async () => {
 				const previousRouteName = routeNameRef.current;
 				const currentRouteName = navRef.getCurrentRoute()?.name;
@@ -100,7 +98,7 @@ function AppNavigation() {
 
 function AppContainer() {
 	// Enables dark mode, and screen size breakpoints, etc. for tailwind
-	useDeviceContext(tw, { withDeviceColorScheme: true });
+	useDeviceContext(tw);
 
 	useInvalidateQuery();
 
