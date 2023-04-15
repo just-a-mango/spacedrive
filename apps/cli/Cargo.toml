@@ -12,3 +12,11 @@ anyhow = "1.0.68"
 hex = "0.4.3"
 sd-crypto = { path = "../../crates/crypto" }
 tokio = { workspace = true, features = ["io-util", "rt-multi-thread"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+[profile.release.package."*"]
+opt-level = 3
